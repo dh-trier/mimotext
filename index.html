@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MiMoText</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/sky.css">
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="lib/css/monokai.css">
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section data-markdown="" data-separator="^\n--\n" data-separator-vertical="^\n---\n" data-charset="utf-8" data-background-image="img/basics/uni-trier_icon.png" data-background-size="70px" data-background-position="right 10px top 10px">
+<script type="text/template">
+<!-- THIS IS WHERE THE CONTENT GOES! -->
+<!-- Any section element inside of this container is displayed as a slide -->
+
+## MiMoText
+**Mining and Modeling Text: Interdisziplinäre Anwendungen, informatische Weiterentwicklung, rechtliche Perspektiven**
+<br/>
+<br/>
+Gefördert im Rahmen der Forschungsinitiative des Landes Rheinland-Pfalz (2019-2022)
+<br/>
+<br/>
+(Lorch, 30. Nov. 2019)
+
+
+--
+### Gliederung
+<br/>
+
+1. Grundidee / Ziele
+2. Teilprojekte
+3. Beispiel 
+
+
+--
+<br/>
+<br/>
+
+## Überblick
+
+---
+### Ziele
+<br/>
+
+* Die Literaturgeschichtsschreibung auf eine datenbasierte Grundlage stellen <!-- .element: class="fragment" data-fragment-index="1" -->
+* Literaturhistorisches Wissen zugänglich machen und anreichern <!-- .element: class="fragment" data-fragment-index="2" -->
+* Ein literaturhistorisches Rechercheinstrument auf LOD-Basis <!-- .element: class="fragment" data-fragment-index="3" -->
+* Anwendungsdomäne: Französischer Roman des 18. Jahrhunderts  <!-- .element: class="fragment" data-fragment-index="4" -->
+
+
+---
+### Projektüberblick
+<a href="img/mimotext-overview.png"><img height="500" src="img/mimotext-overview.png"></img></a>
+
+
+
+
+--
+<br/>
+<br/>
+
+## Teilprojekte
+
+---
+### Teilprojekt: Literaturgeschichten
+
+* Ausgangspunkt: Bibliographie (Autoren, Werke, Metadaten in RDF) <!-- .element: class="fragment" data-fragment-index="1" -->
+* Selektion von Sätzen, die Autoren und/oder Werke nennen <!-- .element: class="fragment" data-fragment-index="2" -->
+* Extraktion von bestimmten Aussagetypen über Autoren und Werke <!-- .element: class="fragment" data-fragment-index="3" -->
+* Ankoppeln der Aussagen an die Einträge der Bibliographie <!-- .element: class="fragment" data-fragment-index="4" -->
+
+
+---
+### Teilprojekt: Romananalyse
+
+* Ausgangspunkt: Romankorpus (1750-1800)  <!-- .element: class="fragment" data-fragment-index="1" -->
+* Identifikation von litwiss. relevanten Eigenschaften: Handlungsorte, Topics, Dialoganteil uvm.  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Ankoppeln der Eigenschaften an die Einträge der Bibliographie <!-- .element: class="fragment" data-fragment-index="3" -->
+* Abgleich / Evaluation  <!-- .element: class="fragment" data-fragment-index="4" -->  
+
+
+---
+### LOD / Modellierung
+
+* Definition grundlegender Aussagetypen (Ontologie) <!-- .element: class="fragment" data-fragment-index="1" -->
+* Suchschema für Teilprojekt Literaturgeschichten <!-- .element: class="fragment" data-fragment-index="2" -->
+* Dokumentation der Ergebnisse aus Teilprojekt Romananalyse <!-- .element: class="fragment" data-fragment-index="3" -->
+
+
+
+--
+<br/>
+<br/>
+
+## Beispiel / Aussagetypen
+
+---
+### Aussagetypen
+
+* (Person) IS_CREATOR Werk (=DC) <!-- .element: class="fragment" data-fragment-index="1" -->
+* (Werk) HAS_SUBJECT Thema (=DC) <!-- .element: class="fragment" data-fragment-index="2" -->
+* (Person) INFLUENCED_BY Person (=WD) <!-- .element: class="fragment" data-fragment-index="3" -->
+* (Person) AWARD_RECEIVED (Name) (=WD) <!-- .element: class="fragment" data-fragment-index="4" -->
+* (Werk) HAS_GENRE (Gattung) (=WD) <!-- .element: class="fragment" data-fragment-index="5" -->
+* (Werk) HAS_CHARACTERS (Figurennamen) (=WD) <!-- .element: class="fragment" data-fragment-index="6" -->
+* (Werk) NARRATIVE_LOCATION (Ort) (=WD) <!-- .element: class="fragment" data-fragment-index="7" -->
+
+
+---
+### Textbeispiel
+
+>Candide ist das meistgelesene Werk Voltaires und war es wohl schon zu Lebzeiten des Autors. Als es 1759 in Genf erstmals im Druck erschien, wurde es zwar sofort verboten, aber doch nur mit dem Ergebnis, daß es im gleichen Jahr noch dreizehn Neuauflagen erlebte. (Erich Köhler)
+
+---
+### Entities
+ 
+```
+
+<title type="work" ref="viaf:176620251 mmf:59ABCD">
+Candide</title> ist das meistgelesene Werk 
+<persName type="author" ref="viaf:36925746">Voltaires
+</persName> und war es wohl schon zu Lebzeiten des Autors. 
+
+Als <title type="work" ref="viaf:176620251 mmf:59ABCD">es
+</title> <date>1759</date> in <placeName type="city" 
+ref="tgn:7007279">Genf</placeName> erstmals im Druck 
+erschien, wurde es zwar sofort verboten, aber doch nur
+mit dem Ergebnis, daß es im gleichen Jahr noch 
+dreizehn Neuauflagen erlebte.</p>
+
+```
+
+---
+### Aussagen (1)
+<br/>
+<br/>
+
+* Voltaire (viaf:36925746) IS_CREATOR_OF Candide (viaf:176620251) <!-- .element: class="fragment" data-fragment-index="1" -->
+* Candide (viaf:176620251) HAS_PUBLICATION_DATE 1759  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Candide (viaf:176620251) HAS_PUBLICATION_LOCATION Genf (tgn:7007279)  <!-- .element: class="fragment" data-fragment-index="3" -->
+
+---
+### Aussagen (2)
+<br/>
+<br/>
+
+* Candide (viaf:176620251) HAS_RECEPTION_INTENSITY high <!-- .element: class="fragment" data-fragment-index="1" -->
+* Candide (viaf:176620251) HAS_RECEPTION_TIME immediate;long-term <!-- .element: class="fragment" data-fragment-index="2" -->
+* Candide (viaf:176620251) HAS_LEGAL_STATUS censored (1759) <!-- .element: class="fragment" data-fragment-index="3" -->
+
+
+---
+### Meta-Aussagen
+<br/>
+<br/>
+
+* {Voltaire (viaf:36925746) IS_CREATOR_OF Candide (viaf:176620251)} HAS_SOURCE Köhler_1984 <!-- .element: class="fragment" data-fragment-index="1" -->
+* Köhler_1984 HAS_SUBJECT Voltaire (viaf:36925746); Candide (viaf:176620251); Genf (tgn:7007279) <!-- .element: class="fragment" data-fragment-index="2" -->
+
+
+--
+### Endergebnis
+<br/>
+
+* "Wikibase für die Literaturgeschichte"
+* Literaturhistorisches Informationssystem auf LOD-Basis, mit SPARQL-Endpoint und Suchmaske
+
+
+</script>
+</section>
+
+<!-- DON'T TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING :-) -->
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+
+<script>
+// More info about config & dependencies:
+// - https://github.com/hakimel/reveal.js#configuration
+// - https://github.com/hakimel/reveal.js#dependencies
+Reveal.initialize({
+dependencies: [
+{ src: 'plugin/markdown/marked.js' },
+{ src: 'plugin/markdown/markdown.js' },
+{ src: 'plugin/notes/notes.js', async: true },
+{ src: 'plugin/highlight/highlight.js', async: true }
+]
+});
+</script>
+</body>
+</html>
