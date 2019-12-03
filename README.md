@@ -1,0 +1,2 @@
+# mimotext
+Slides about MiMoText
